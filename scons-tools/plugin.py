@@ -33,7 +33,7 @@ def __run_plugin_source_args(target, source, env, for_signature):
 
 
 __run_plugin_builder = Builder(
-    action='/scratch/ajmaas/SymbolicRange/install/bin/opt -o $TARGET ' + 
+    action='/scratch/ajmaas/SymbolicRange/install/bin/opt -analyze -o $TARGET ' + 
     #'-load /p/polyglot/public/tools/range-analysis/install/lib/vSSA.so ' + 
     #'-load /p/polyglot/public/tools/range-analysis/install/lib/RAInstrumentation.so ' +
     #'-load /p/polyglot/public/tools/range-analysis/install/lib/RangeAnalysis.so ' + 
