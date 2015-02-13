@@ -20,7 +20,8 @@ variables = Variables(['.scons-options'], ARGUMENTS)
 variables.Add(PathVariable('IIGLUE', 'Path to iiglue executable', '/p/polyglot/public/bin/iiglue', pathIsOptionalExecutable))
 
 default = WhereIs('llvm-config', (
-    '/p/polyglot/public/bin',
+	'/scratch/ajmaas/SymbolicRange/install/bin',
+    #'/p/polyglot/public/bin',
     '/usr/bin',
 ))
 variables.Add(PathVariable('LLVM_CONFIG', 'Path to llvm-config executable', default, pathIsExecutable))
@@ -97,9 +98,10 @@ env = conf.Finish()
 
 penv = env.Clone(
     CXXFLAGS=('-Wall', '-Wextra', '-Werror', '-std=c++11'),
-    CPPPATH='/unsup/boost-1.55.0/include',
+    CPPPATH=('/unsup/boost-1.55.0/include', '/scratch/ajmaas/SymbolicRange/install/include'),
     INCPREFIX='-isystem ',
     LIBS=('LLVM-$llvm_version',),
+    LD_PRELOAD='/scratch/ajmaas/SymbolicRange/install/lib/',
 )
 
 penv.PrependENVPath('PATH', '/s/gcc-4.9.0/bin')
@@ -110,11 +112,20 @@ penv.AppendUnique(
         '-frtti',
     ), delete_existing=True)
 
+#noWarningCXXFlags = [x for x in penv['CXXFLAGS'] if x[:2] != '-W'] #this is an awful hack, blame Peter.
+
+#SRA = penv.SharedObject('SRATest.cc', CXXFLAGS=noWarningCXXFlags)
+
 plugin, = penv.SharedLibrary('CArrayIntrospection', (
     'BacktrackPhiNodes.cc',
     'IIGlueReader.cc',
     'FindSentinels.cc',
     'NullAnnotator.cc',
+    'FindLengthChecks.cc',
+    'UpperBoundIndexing.cc',
+    'ClientRA.cc',
+    #SRA,
+    'SRATest.cc',
 ))
 
 env['plugin'] = plugin

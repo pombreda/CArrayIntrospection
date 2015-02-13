@@ -33,7 +33,17 @@ def __run_plugin_source_args(target, source, env, for_signature):
 
 
 __run_plugin_builder = Builder(
-    action='opt -analyze -o $TARGET $_RUN_PLUGIN_SOURCE_ARGS $PLUGIN_ARGS',
+    action='/scratch/ajmaas/SymbolicRange/install/bin/opt -o $TARGET ' + 
+    #'-load /p/polyglot/public/tools/range-analysis/install/lib/vSSA.so ' + 
+    #'-load /p/polyglot/public/tools/range-analysis/install/lib/RAInstrumentation.so ' +
+    #'-load /p/polyglot/public/tools/range-analysis/install/lib/RangeAnalysis.so ' + 
+    #'-load /p/polyglot/public/tools/range-analysis/install/lib/RAPrinter.so ' +
+    '-load /scratch/ajmaas/SymbolicRange/install/lib/vSSA.so ' + 
+    '-load /scratch/ajmaas/SymbolicRange/install/lib/RAInstrumentation.so ' +
+    '-load /scratch/ajmaas/SymbolicRange/install/lib/RangeAnalysis.so ' + 
+    '-load /scratch/ajmaas/SymbolicRange/install/lib/RAPrinter.so ' +
+    '-load /scratch/ajmaas/SymbolicRange/install/lib/GreenArrays.so ' +
+    '$_RUN_PLUGIN_SOURCE_ARGS $PLUGIN_ARGS',
     emitter=__run_plugin_emitter,
     suffix='.actual',
 )

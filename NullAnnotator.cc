@@ -19,6 +19,7 @@
 #include <llvm/IR/Module.h>
 #include <llvm/Support/CommandLine.h>
 #include <llvm/Support/Debug.h>
+#include <llvm/Support/raw_ostream.h>
 
 #if (1000 * LLVM_VERSION_MAJOR + LLVM_VERSION_MINOR) >= 3005
 #include <llvm/IR/InstIterator.h>

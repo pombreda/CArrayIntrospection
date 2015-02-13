@@ -49,8 +49,8 @@ if env['IIGLUE']:
 #  subdirectories
 #
 
-SConscript(dirs=['sentinelCheckTests'], exports='env')
-#SConscript(dirs=['sentinelCheckTests','fixedLengthTests'], exports='env')
+#SConscript(dirs=['sentinelCheckTests'], exports='env')
+SConscript(dirs=['sentinelCheckTests','fixedLengthTests/symbolicRangeFun'], exports='env')
 
 # Local variables:
 # flycheck-flake8rc: "../scons-flake8.ini"
