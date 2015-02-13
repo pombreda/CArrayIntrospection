@@ -1,0 +1,11 @@
+Printing analysis 'Assign names to anonymous instructions' for function 'foo':
+Pass::print not implemented for pass: 'Assign names to anonymous instructions'!
+Printing analysis 'Promote Memory to Register' for function 'foo':
+Pass::print not implemented for pass: 'Promote Memory to Register'!
+Printing analysis 'Break critical edges in CFG' for function 'foo':
+Pass::print not implemented for pass: 'Break critical edges in CFG'!
+Printing analysis 'Static Single Assignment Construction' for function 'foo':
+Pass::print not implemented for pass: 'Static Single Assignment Construction'!
+Printing analysis 'Find loops that have a fixed number of iterations that also index into arrays.':
+Analyzing foo
+Argument array has max index 43

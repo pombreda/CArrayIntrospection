@@ -1,0 +1,4 @@
+Import('env')
+
+env.RunTests(PLUGIN_ARGS=('-instnamer', '-mem2reg', '-break-crit-edges', 
+'-vssa', '-redef', '-sra-printer'))

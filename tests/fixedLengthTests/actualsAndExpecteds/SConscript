@@ -1,0 +1,6 @@
+Import('env')
+
+env.RunTests(PLUGIN_ARGS=('-instnamer', '-mem2reg', '-break-crit-edges', '-vssa', '-find-length'))
+
+
+SConscript(dirs=['range-analysis-fun'], exports='env')
